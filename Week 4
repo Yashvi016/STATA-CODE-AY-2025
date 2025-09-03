@@ -1,0 +1,18 @@
+sysuse auto
+describe
+tab foreign
+tab foreign, nolabel
+regress price mpg
+regress price i.foreign
+regress i.froeign mpg
+regress i.froeign mpg i.foreign#c.mpg
+avplots
+clear
+sysuse nlsw88
+tab race tab race,nolabel
+regress wage ttl_exp 
+regress wage ttl_exp i.race i.race#c.ttl_exp
+regress wage ttl_exp ib2.race i.race#c.ttl_exp
+regress wage ttl_exp ib3.race i.race#c.ttl_exp
+regress wage i.race i.c_city
+regress wage i.race i.c_city i.race#i.c_city
