@@ -1,0 +1,20 @@
+gen n=_n
+tsset n
+tsline ex_rate
+gen time=daily(observation_date,"DMY")
+gen time=daily(date,"DMY")
+format time %td
+tsset time
+tsline ex_rate
+reg ex_rate time
+predict ex_rate_trend
+tsline ex_rate_trend
+tsline ex_rate_trend ex_rate
+gen dtrend = ex_rate- ex_rate_trend
+tsline dtrend ex_rate_trend
+tsline ex_rate ex_rate_trend
+tsline dtrend
+tsline dtrend ex_rate
+tsline ex_rate
+tsline dtrend
+tsline d.ex_rate
